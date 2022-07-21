@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.crypto import get_random_string
 from paytum import Checksum
 from policeapp.models import V_Fines
-MERCHANT_KEY = 'k&eRncuwpcJl3l1P'
+MERCHANT_KEY = '**************************'
 from adminapp.models import *
 from .models import*
 
@@ -50,7 +50,7 @@ def payments(request, id):
         
         print("1")
         param_dict={
-        'MID': 'ZixMDm69033601106851',
+        'MID': '*****************',
         'ORDER_ID': str(order_id),
         'TXN_AMOUNT': str(amount),
         'CUST_ID': str(v_num),
@@ -151,46 +151,3 @@ def u_logout(request):
 
 
 
-
-
-
-#--------------------------payment code--------------------------->
-
-# chars = '0123456789'
-#             order_id = get_random_string(4, chars)
-#             amount=30
-#             param_dict={
-
-#             'MID': 'ZixMDm69033601106851',
-#             'ORDER_ID': str(order_id),
-#             'TXN_AMOUNT': str(amount),
-#             'CUST_ID': email,
-#             'INDUSTRY_TYPE_ID': 'Retail',
-#             'WEBSITE': 'WEBSTAGING',
-#             'CHANNEL_ID': 'WEB',
-#             'CALLBACK_URL':'http://127.0.0.1:5500/mainapp/handlerequest',
-
-#             }
-#             param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
-#             return  render(request, 'main/paytm.html', {'param_dict': param_dict})
-
-
-
-#-----------------------------redirect page-------------------->
-
-# @csrf_exempt
-# def handlerequest(request):
-#     form = request.POST
-#     response_dict = {}
-#     for i in form.keys():
-#         response_dict[i] = form[i]
-#         if i == 'CHECKSUMHASH':
-#             checksum = form[i]
-
-#     verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
-#     if verify:
-#         if response_dict['RESPCODE'] == '01':
-#             print('order successful')
-#         else:
-#             print('order was not successful because' + response_dict['RESPMSG'])
-#     return render(request, 'main/paystatus.html', {'response': response_dict})
